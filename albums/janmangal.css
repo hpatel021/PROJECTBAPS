@@ -1,0 +1,45 @@
+/* Janmangal Album CSS */
+
+body {
+    margin: 0;
+    font-family: "Poppins", sans-serif;
+    background: #fff8ee;
+    color: #3a1c00;
+}
+
+header {
+    background: #ffb347;
+    padding: 20px;
+    text-align: center;
+}
+
+nav a {
+    color: #3a1c00;
+    margin: 0 15px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.album-page {
+    padding: 20px;
+}
+
+#playlist li {
+    list-style: none;
+    padding: 10px;
+    background: #ffe7c9;
+    margin: 5px 0;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+#playlist li:hover {
+    background: #ffd7a3;
+}
+
+footer {
+    text-align: center;
+    padding: 20px;
+    background: #ffb347;
+    margin-top: 40px;
+}

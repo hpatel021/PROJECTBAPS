@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Aarti Album</title>
+<link rel="stylesheet" href="aarti.css">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<!-- Header -->
+<header>
+    <div class="header-container">
+        <h1>Aarti Album</h1>
+        <nav>
+            <a href="../index.html">Home</a>
+            <a href="../music.html">Music</a>
+            <a href="../gallery.html">Gallery</a>
+        </nav>
+    </div>
+
+    <!-- Overlay for readability & spiritual glow -->
+    <div class="header-overlay"></div>
+
+    <!-- Mandala / lotus overlay -->
+    <div class="mandala-overlay"></div>
+
+    <!-- Floating spiritual particles -->
+    <div class="particles">
+        <span></span><span></span><span></span><span></span><span></span>
+        <span></span><span></span><span></span><span></span><span></span>
+    </div>
+</header>
+
+<!-- Album Section -->
+<section class="album-page">
+    <h2>Track List</h2>
+
+    <!-- Buttons moved above the audio player -->
+    <div class="album-buttons">
+        <button id="autoplayBtn" class="pro-btn">Autoplay Album</button>
+        <button id="downloadAllTracksBtn" class="pro-btn">Download All Tracks</button>
+    </div>
+
+    <audio id="audioPlayer" controls></audio>
+    <ul id="playlist">
+        <li data-src="../audio/aarti1.mp3">Morning Aarti | प्रातःकाल आरती अष्टक</li>
+        <li data-src="../audio/aarti2.mp3">Evening Aarti | सायंकाल आरती अष्टक</li>
+    </ul>
+</section>
+
+<!-- Footer -->
+<footer>© 2025 BAPS Swaminarayan Temple | Newport News VA</footer>
+
+<!-- JS Player -->
+<script>
+// Elements
+const audio = document.getElementById("audioPlayer");
+const playlist = document.getElementById("playlist");
+const tracks = playlist.querySelectorAll("li");
+const autoplayBtn = document.getElementById("autoplayBtn");
+const downloadAllTracksBtn = document.getElementById("downloadAllTracksBtn");
+
+// Track click event
+tracks.forEach((track, index) => {
+    track.addEventListener("click", () => {
+        audio.src = track.getAttribute("data-src");
+        audio.play();
+        tracks.forEach(t => t.classList.remove("active"));
+        track.classList.add("active");
+    });
+});
+
+// --------------------------
+// AUTOPLAY ALBUM FUNCTION
+// --------------------------
+autoplayBtn.addEventListener("click", () => {
+    if(tracks.length === 0) return;
+
+    let current = 0;
+    audio.src = tracks[current].getAttribute("data-src");
+    tracks.forEach(t => t.classList.remove("active"));
+    tracks[current].classList.add("active");
+    audio.play();
+
+    audio.onended = () => {
+        current++;
+        if(current < tracks.length) {
+            audio.src = tracks[current].getAttribute("data-src");
+            tracks.forEach(t => t.classList.remove("active"));
+            tracks[current].classList.add("active");
+            audio.play();
+        } else {
+            audio.onended = null; // Stop autoplay after last track
+        }
+    };
+});
+
+// --------------------------
+// DOWNLOAD ALL TRACKS BUTTON
+// --------------------------
+
+// Load JSZip
+let jsZipLoaded = false;
+let jsZipScript = document.createElement("script");
+jsZipScript.src = "https://cdnjs.cloudflare.com/ajax/libs/jszip/3.7.1/jszip.min.js";
+jsZipScript.onload = () => jsZipLoaded = true;
+document.body.appendChild(jsZipScript);
+
+downloadAllTracksBtn.addEventListener("click", () => {
+    if(!jsZipLoaded) return alert("JSZip is still loading, try again in a moment.");
+
+    const urls = [...tracks].map(t => t.getAttribute("data-src"));
+    const zip = new JSZip();
+    const folder = zip.folder("aarti_tracks");
+
+    Promise.all(
+        urls.map(url =>
+            fetch(url)
+                .then(res => res.blob())
+                .then(blob => {
+                    const fileName = url.split("/").pop();
+                    folder.file(fileName, blob);
+                })
+        )
+    ).then(() => {
+        zip.generateAsync({type: "blob"}).then(content => {
+            const a = document.createElement("a");
+            a.href = URL.createObjectURL(content);
+            a.download = "Aarti-Album.zip";
+            a.click();
+        });
+    });
+});
+</script>
+
+</body>
+</html>

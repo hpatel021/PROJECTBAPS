@@ -1,0 +1,202 @@
+/* ============================= */
+/* RESET & FONTS                 */
+/* ============================= */
+body, html {
+    margin: 0;
+    font-family: "Poppins", sans-serif;
+    background: #fff8ee;
+    color: #3a1c00;
+    scroll-behavior: smooth;
+}
+
+/* ============================= */
+/* HEADER & HERO SECTION          */
+/* ============================= */
+header {
+    position: relative;
+    height: 60vh;
+    text-align: center;
+    color: #fff;
+    overflow: hidden;
+    background: url('../images/backgroundaarti.jpg') no-repeat center center/cover;
+    background-size: cover;
+}
+
+header::before {
+    content: '';
+    position: absolute;
+    top:0; left:0;
+    width:100%; height:100%;
+    background: rgba(0,0,0,0.35);
+    z-index: 0;
+}
+
+.header-container {
+    position: relative;
+    z-index: 3;
+    padding: 40px 20px;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 42px;
+    font-weight: 700;
+    text-shadow: 2px 2px 12px rgba(255,180,50,0.8);
+}
+
+/* Header navigation */
+header nav {
+    margin-top: 15px;
+}
+
+header nav a {
+    color: #fff;
+    margin: 0 15px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+header nav a:hover,
+header nav a.active {
+    color: #ffdf00;
+    text-shadow: 0 0 6px #ffdf00;
+}
+
+/* ============================= */
+/* FLOATING SPIRITUAL PARTICLES  */
+/* ============================= */
+.particles span {
+    position: absolute;
+    display: block;
+    width: 10px; height: 10px;
+    background: radial-gradient(circle, #ffd966, #ffb347);
+    border-radius: 50%;
+    animation: floatUp linear infinite;
+    bottom: -20px;
+    box-shadow: 0 0 12px rgba(255,220,150,0.6);
+}
+
+.particles span:nth-child(1) { left: 5%; animation-duration: 12s; }
+.particles span:nth-child(2) { left: 15%; animation-duration: 14s; }
+.particles span:nth-child(3) { left: 25%; animation-duration: 11s; }
+.particles span:nth-child(4) { left: 35%; animation-duration: 13s; }
+.particles span:nth-child(5) { left: 45%; animation-duration: 10s; }
+.particles span:nth-child(6) { left: 55%; animation-duration: 15s; }
+.particles span:nth-child(7) { left: 65%; animation-duration: 12s; }
+.particles span:nth-child(8) { left: 75%; animation-duration: 14s; }
+.particles span:nth-child(9) { left: 85%; animation-duration: 11s; }
+.particles span:nth-child(10){ left: 95%; animation-duration: 13s; }
+
+@keyframes floatUp {
+    0% { transform: translateY(0) scale(0.7); opacity: 0.3; }
+    50% { opacity: 0.8; }
+    100% { transform: translateY(-400px) scale(1.3); opacity: 0; }
+}
+
+/* ============================= */
+/* ALBUM PAGE SECTION             */
+/* ============================= */
+.album-page {
+    padding: 30px 25px;
+    max-width: 800px;
+    margin: -150px auto 60px auto;
+    text-align: center;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 20px;
+    box-shadow: 0 12px 30px rgba(0,0,0,0.15);
+    backdrop-filter: blur(4px);
+    border: 2px solid #ffcc70;
+    position: relative;
+    z-index: 4;
+}
+
+.album-page h2 {
+    font-size: 32px;
+    margin-bottom: 25px;
+    color: #7a3e00;
+    text-shadow: 1px 1px 8px rgba(255,180,50,0.4);
+}
+
+/* Playlist items */
+#playlist {
+    padding: 0;
+    margin: 20px 0;
+}
+
+#playlist li {
+    list-style: none;
+    padding: 18px 22px;
+    margin: 12px 0;
+    border-radius: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    background: linear-gradient(145deg, #ffe7c9, #ffd17a);
+    transition: 0.3s;
+    box-shadow: 0 4px 12px rgba(255,180,50,0.2);
+}
+
+#playlist li:hover,
+#playlist li.active {
+    background: linear-gradient(0deg, #d68307, #f7bd71);
+    box-shadow: 0 8px 20px rgba(145, 115, 65, 0.35);
+}
+
+/* Audio player */
+audio {
+    width: 100%;
+    margin-top: 20px;
+    outline: none;
+    border-radius: 10px;
+}
+
+/* ============================= */
+/* NEW BUTTONS BELOW TRACKLIST    */
+/* ============================= */
+.album-buttons {
+    margin-bottom: 20px; /* space between buttons and audio player */
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+
+.pro-btn {
+    padding: 12px 24px;
+    border: none;
+    border-radius: 15px;
+    background: linear-gradient(145deg, #ffe7c9, #ffd17a);
+    font-weight: 600;
+    cursor: pointer;
+    font-size: 16px;
+    transition: 0.3s;
+    box-shadow: 0 4px 12px rgba(255,180,50,0.25);
+}
+
+.pro-btn:hover {
+    background: linear-gradient(0deg, #d68307, #f7bd71);
+    box-shadow: 0 8px 20px rgba(145, 115, 65, 0.35);
+}
+
+/* ============================= */
+/* FOOTER                         */
+/* ============================= */
+footer {
+    text-align: center;
+    padding: 25px;
+    background: linear-gradient(to right, #ffb347, #ffcc70);
+    color: #3a1c00;
+    font-weight: bold;
+    margin-top: 60px;
+    box-shadow: 0 -4px 10px rgba(255,180,50,0.3);
+}
+
+/* ============================= */
+/* RESPONSIVE DESIGN              */
+/* ============================= */
+@media (max-width: 768px) {
+    header h1 { font-size: 32px; }
+    .album-page h2 { font-size: 26px; }
+    #playlist li { font-size: 16px; padding: 14px 18px; }
+}
