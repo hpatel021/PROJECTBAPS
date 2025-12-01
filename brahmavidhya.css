@@ -155,7 +155,11 @@ nav ul li a:hover, nav ul li a.active {
     font-size: 48px;
     font-weight: 700;
     color: #fff;
+<<<<<<< HEAD
     text-transform: auto;
+=======
+    text-transform: uppercase;
+>>>>>>> 4a370c21705add704215595056a8742f84e22e41
     letter-spacing: 2px;
     text-shadow: 0 0 8px #ffdf00, 0 0 12px #ffb347, 0 0 20px #ffd700;
     animation: flicker 3s infinite alternate, floatText 6s ease-in-out infinite;
