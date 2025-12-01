@@ -69,6 +69,15 @@ nav {
     position: relative;
     z-index: 2;
 }
+.nav-toggle {
+    display: none;
+    font-size: 32px;
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+}
+
 
 nav ul {
     list-style: none;
@@ -221,6 +230,25 @@ footer {
     nav ul li a {
         font-size: 18px;
     }
+    /* Show hamburger icon */
+.nav-toggle {
+    display: block;
+    margin-top: 10px;
+}
+
+/* Hide nav links by default */
+.nav-links {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    text-align: center;
+    margin-top: 10px;
+}
+
+/* Show nav when hamburger is clicked */
+.nav-links.open {
+    display: flex;
+}
 
     .logo-main { font-size: 20px; }
     .logo-sub { font-size: 12px; }
