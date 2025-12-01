@@ -215,6 +215,10 @@ footer {
         align-items: center;
         padding: 15px 20px;
     }
+    nav {
+    position: relative; /* already exists */
+    z-index: 10;        /* higher than hero-text (2) */
+}
 
     nav ul {
         flex-direction: column;
@@ -235,14 +239,21 @@ footer {
     display: block;
     margin-top: 10px;
 }
-
+}
+/* Hide nav links by default */
 /* Hide nav links by default */
 .nav-links {
     display: none;
     flex-direction: column;
     width: 100%;
     text-align: center;
-    margin-top: 10px;
+    margin-top: 0;
+    position: absolute;
+    top: 60px; /* below the nav bar */
+    left: 0;
+    background: rgba(0, 0, 0, 0.9); /* dark semi-transparent */
+    padding: 20px 0;
+    z-index: 5;
 }
 
 /* Show nav when hamburger is clicked */
@@ -250,19 +261,14 @@ footer {
     display: flex;
 }
 
-    .logo-main { font-size: 20px; }
-    .logo-sub { font-size: 12px; }
+/* Nav links styling */
+.nav-links li {
+    margin: 12px 0;
+}
 
-    /* Hero */
-    .hero-text h1 { font-size: 38px; }
-    .hero-text p { font-size: 16px; padding: 0 10px; }
-
-    /* About section */
-    .enhanced-about { padding: 20px 20px; }
-    .about-description { font-size: 17px; padding: 20px 15px; }
-
-    /* Symbols smaller */
-    .floating-symbols span { font-size: 22px; }
+.nav-links li a {
+    color: #fff;
+    font-size: 18px;
 }
 
 @media (max-width: 480px) {
