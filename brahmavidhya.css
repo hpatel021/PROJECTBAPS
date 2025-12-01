@@ -1,0 +1,448 @@
+/* ----------------------------------------------------
+   GLOBAL SETTINGS
+---------------------------------------------------- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+body {
+    background: #0d0d0d;
+    font-family: "Poppins", sans-serif;
+    color: #fff;
+    overflow-x: hidden;
+}
+
+
+/* ----------------------------------------------------
+   LOGO STYLING
+---------------------------------------------------- */
+.logo {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.1;
+    margin: 0; /* remove any extra space */
+}
+
+.logo-main {
+    font-size: 26px;
+    font-weight: 700;
+    color: #fafaf8; /* glowing yellow */
+   text-shadow: 0 2px 10px rgba(255, 200, 80, 0.7); /* same as index.html */
+}
+
+.logo-sub {
+    font-size: 14px;
+    font-weight: 500;
+    color: #ffdd99;
+    letter-spacing: 0.5px;
+    margin-top: 3px;
+    opacity: 0.9;
+    text-align: left;
+    text-shadow: 0 0 6px #ffdd99;
+}
+
+/* ----------------------------------------------------
+   NAVBAR & NAV LINKS
+---------------------------------------------------- */
+/* Navigation */
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 50px;
+    position: relative;
+    z-index: 2;
+}
+
+nav .logo {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+
+nav ul li {
+    margin-left: 0px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #fff;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+nav ul li a:hover, nav ul li a.active {
+    color: #ffdf00;
+}
+
+
+/* ----------------------------------------------------
+   GALLERY HEADER
+---------------------------------------------------- */
+.gallery-header {
+    position: relative;
+    width: 100%;
+    height: 380px;
+    background: url("../assets/diwali-header.jpg") center/cover no-repeat;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; /* align to top */
+    text-align: center;
+}
+
+.gallery-header nav {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 50px; /* adjust to remove extra top space */
+    align-items: center;
+}
+
+.gallery-header .logo {
+    font-size: 26px;
+    font-weight: 700;
+    color: #ffdf00;
+    text-shadow: 0 0 10px #ffdf00, 0 0 20px #ffd700;
+}
+
+.gallery-header nav ul {
+    display: flex;
+    gap: 30px;
+}
+
+.gallery-header nav ul li {
+    list-style: none;
+}
+
+.gallery-header nav ul li a {
+    text-decoration: none;
+    color: white;
+    font-weight: 600;
+    transition: 0.3s;
+    text-shadow: 0 0 6px #ffdf00;
+}
+
+.gallery-header nav ul li a:hover,
+.gallery-header nav ul li a.active {
+    color: #ffdf00;
+    text-shadow: 0 0 12px #ffdf00, 0 0 20px #ffd700;
+}
+
+
+/* ----------------------------------------------------
+   HERO TEXT
+---------------------------------------------------- */
+/* Hero Text Animation */
+.hero-text {
+    position: relative;
+    text-align: center;
+    z-index: 2;
+    overflow: hidden;
+    padding: 50px 20px;
+    margin-bottom: 1;
+}
+
+/* Title Animation */
+.hero-text h1 {
+    font-size: 48px;
+    font-weight: 700;
+    color: #fff;
+    text-transform: auto;
+    letter-spacing: 2px;
+    text-shadow: 0 0 8px #ffdf00, 0 0 12px #ffb347, 0 0 20px #ffd700;
+    animation: flicker 3s infinite alternate, floatText 6s ease-in-out infinite;
+}
+
+/* Subtitle Animation */
+.hero-text p {
+    margin-top: 15px;
+    font-size: 22px;
+    color: #fff5e6;
+    text-shadow: 0 0 5px #668aff, 0 0 10px #ffb347;
+    animation: floatText 6s ease-in-out infinite, glowPulse 2s infinite alternate;
+}
+
+/* Flicker effect for h1 */
+@keyframes flicker {
+    0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% { opacity: 1; }
+    20%, 22%, 24%, 55% { opacity: 0.6; }
+}
+
+/* Floating effect for both h1 and p */
+@keyframes floatText {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+/* Glow pulse effect for p */
+@keyframes glowPulse {
+    0% { text-shadow: 0 0 5px #ffd966, 0 0 10px #ffb347; color: #fff5e6; }
+    50% { text-shadow: 0 0 15px #ffdf00, 0 0 25px #ffb347; color: #fffacd; }
+    100% { text-shadow: 0 0 5px #ffd966, 0 0 10px #ffb347; color: #fff5e6; }
+}
+
+/* Optional: tiny sparkles behind hero text */
+.hero-text::after {
+    content: '';
+    position: absolute;
+    width: 150%;
+    height: 150%;
+    top: -25%;
+    left: -25%;
+    background: radial-gradient(circle, rgba(255,223,0,0.2) 2%, transparent 2%) repeat;
+    background-size: 20px 20px;
+    animation: sparkle 4s linear infinite;
+    pointer-events: none;
+    z-index: 1;
+}
+
+@keyframes sparkle {
+    0% { transform: translate(0,0); opacity: 0.7; }
+    50% { transform: translate(20px, -20px); opacity: 1; }
+    100% { transform: translate(0,0); opacity: 0.7; }
+}
+
+/* ----------------------------------------------------
+   FLOATING SPIRITUAL PARTICLES
+---------------------------------------------------- */
+.particles span {
+    position: absolute;
+    display: block;
+    width: 10px; height: 10px;
+    background: radial-gradient(circle, hsl(14, 91%, 48%), #ffb347);
+    border-radius: 50%;
+    animation: floatUp linear infinite;
+    bottom: -20px;
+    z-index: 1;
+    box-shadow: 0 0 12px rgba(255,220,150,0.6);
+}
+
+.particles span:nth-child(1) { left: 5%; animation-duration: 12s; }
+.particles span:nth-child(2) { left: 15%; animation-duration: 14s; }
+.particles span:nth-child(3) { left: 25%; animation-duration: 11s; }
+.particles span:nth-child(4) { left: 35%; animation-duration: 13s; }
+.particles span:nth-child(5) { left: 45%; animation-duration: 10s; }
+.particles span:nth-child(6) { left: 55%; animation-duration: 15s; }
+.particles span:nth-child(7) { left: 65%; animation-duration: 12s; }
+.particles span:nth-child(8) { left: 75%; animation-duration: 14s; }
+.particles span:nth-child(9) { left: 85%; animation-duration: 11s; }
+.particles span:nth-child(10){ left: 95%; animation-duration: 13s; }
+
+@keyframes floatUp {
+    0% { transform: translateY(0) scale(0.7); opacity: 0.3; }
+    50% { opacity: 0.8; }
+    100% { transform: translateY(-400px) scale(1.3); opacity: 0; }
+}
+
+/* ----------------------------------------------------
+   DOWNLOAD ACTION BUTTONS
+---------------------------------------------------- */
+.download-actions {
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+    margin-top: -20px;   /* You still want this negative margin for positioning */
+    margin-bottom: 50px;
+    position: relative;   /* Added to allow z-index to take effect */
+    z-index: 10;          /* Ensure buttons are on top */
+}
+
+
+.pro-btn {
+    padding: 14px 35px;
+    font-size: 18px;
+    font-weight: 600;
+    color: #0d0d0d;
+    background: linear-gradient(135deg, #ffdf00, #ffb300);
+    border: none;
+    border-radius: 14px;
+    cursor: pointer;
+    transition: 0.3s ease;
+    box-shadow: 0 0 15px rgba(255, 223, 0, 0.5);
+}
+
+.pro-btn:hover {
+    transform: scale(1.08);
+    box-shadow: 0 0 25px rgba(255, 223, 0, 0.9);
+}
+
+.pro-btn.disabled {
+    background: gray !important;
+    box-shadow: none !important;
+    cursor: not-allowed !important;
+    transform: none !important;
+}
+
+/* ----------------------------------------------------
+   GALLERY GRID
+---------------------------------------------------- */
+.gallery-container {
+    width: 95%;
+    margin: auto;
+    margin-top: 10px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    column-gap: 18px;
+    row-gap: 22px;
+}
+
+/* ----------------------------------------------------
+   PHOTO CARD
+---------------------------------------------------- */
+.photo-card {
+    position: relative;
+    height: 250px;
+    border-radius: 12px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.photo-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 12px;
+}
+
+.photo-card:hover img {
+    transform: scale(1.07);
+    transition: 0.4s;
+}
+
+.photo-card.selected {
+    outline: 4px solid #ffdf00;
+    box-shadow: 0 0 18px #ffdf00;
+}
+
+/* ----------------------------------------------------
+   CHECKBOX OVERLAY
+---------------------------------------------------- */
+.select-overlay {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    z-index: 10;
+}
+
+.select-photo {
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+    accent-color: #ffdf00;
+    transform: scale(1.1);
+}
+
+/* ----------------------------------------------------
+   MODAL
+---------------------------------------------------- */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 9998;
+    padding-top: 70px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.92);
+}
+
+.modal-content {
+    margin: auto;
+    display: block;
+    max-width: 90%;
+    max-height: 85vh;
+}
+
+#caption {
+    text-align: center;
+    padding: 10px;
+    font-size: 20px;
+    margin-top: 15px;
+}
+
+/* Close Button */
+.close {
+    position: absolute;
+    top: 25px;
+    right: 40px;
+    color: #fff;
+    font-size: 45px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+    z-index: 9999;
+}
+
+.close:hover {
+    color: #ffdf00;
+}
+
+/* ----------------------------------------------------
+   MODAL ARROWS
+---------------------------------------------------- */
+.modal-arrow {
+    position: absolute;
+    top: 50%;
+    font-size: 55px;
+    color: #ffffffcc;
+    cursor: pointer;
+    user-select: none;
+    transform: translateY(-50%);
+    padding: 18px;
+    background: rgba(0,0,0,0.45);
+    border-radius: 50%;
+    transition: 0.25s ease;
+    z-index: 9999;
+}
+
+.modal-arrow:hover {
+    background: rgba(255, 223, 0, 0.8);
+    color: #000;
+    transform: translateY(-50%) scale(1.15);
+    box-shadow: 0 0 15px #ffdf00;
+}
+
+.modal-arrow-left { left: 35px; }
+.modal-arrow-right { right: 35px; }
+
+/* ----------------------------------------------------
+   FOOTER
+---------------------------------------------------- */
+footer {
+    text-align: center;
+    padding: 30px;
+    margin-top: 40px;
+    font-size: 16px;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    color: #bbbbbb;
+}
+
+/* ----------------------------------------------------
+   RESPONSIVE
+---------------------------------------------------- */
+@media (max-width: 768px) {
+    .hero-text h1 {
+        font-size: 34px;
+    }
+
+    .modal-arrow {
+        font-size: 42px;
+        padding: 12px;
+    }
+
+    .pro-btn {
+        font-size: 15px;
+        padding: 12px 22px;
+    }
+}
