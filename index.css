@@ -1,10 +1,10 @@
 /* Home page CSS */
-
 body, html {
     margin: 0;
     padding: 0;
     font-family: "Poppins", sans-serif;
 }
+
 /* Logo styling */
 .logo {
     display: flex;
@@ -28,17 +28,7 @@ body, html {
     opacity: 0.9;
 }
 
-/* Improve nav spacing and alignment */
-nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 25px 50px;
-    position: relative;
-    z-index: 2;
-}
-
-/* Improve hero text */
+/* HERO TEXT */
 .hero-text h1 {
     font-size: 60px;
     margin: 0;
@@ -52,15 +42,7 @@ nav {
     color: #ffeccc;
 }
 
-/* Mobile responsive */
-@media (max-width: 768px) {
-    .logo-main { font-size: 20px; }
-    .logo-sub { font-size: 12px; }
-    .hero-text h1 { font-size: 42px; }
-    .hero-text p { font-size: 18px; }
-}
-
-/* Header + Hero */
+/* Header */
 .header {
     background: url('images/temple-bg.jpg') no-repeat center center/cover;
     height: 100vh;
@@ -78,19 +60,14 @@ nav {
     background: rgba(0,0,0,0.5);
 }
 
-/* Navigation */
+/* Navigation bar */
 nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 20px 50px;
+    padding: 18px 50px;
     position: relative;
     z-index: 2;
-}
-
-nav .logo {
-    font-size: 24px;
-    font-weight: bold;
 }
 
 nav ul {
@@ -101,13 +78,13 @@ nav ul {
 }
 
 nav ul li {
-    margin-left: 30px;
+    margin-left: 28px;
 }
 
 nav ul li a {
     text-decoration: none;
     color: #fff;
-    font-weight: bold;
+    font-weight: 600;
     transition: 0.3s;
 }
 
@@ -125,19 +102,7 @@ nav ul li a:hover, nav ul li a.active {
     z-index: 2;
 }
 
-.hero-text h1 {
-    font-size: 60px;
-    margin: 0;
-    text-shadow: 2px 2px 8px #000;
-}
-
-.hero-text p {
-    font-size: 24px;
-    margin-top: 10px;
-    text-shadow: 1px 1px 6px #000;
-}
-
-/* Enhanced About Section with Spiritual Visuals */
+/* ABOUT SECTION */
 .enhanced-about {
     position: relative;
     padding: 4px 80px;
@@ -149,7 +114,6 @@ nav ul li a:hover, nav ul li a.active {
     border-bottom: 2px solid #ffb347;
 }
 
-/* Soft glowing overlay */
 .about-overlay {
     position: absolute;
     top: 0;
@@ -165,7 +129,7 @@ nav ul li a:hover, nav ul li a.active {
     0% { opacity: 0.4; }
     100% { opacity: 0.8; }
 }
-/* Modern colorful paragraph */
+
 .about-description {
     position: relative;
     z-index: 3;
@@ -173,36 +137,28 @@ nav ul li a:hover, nav ul li a.active {
     margin: 0 auto;
     font-size: 20px;
     line-height: 1.7;
-    color: #4b2600;
     padding: 40px 25px;
     border-radius: 12px;
     background: rgba(255, 244, 225, 0.55);
     backdrop-filter: blur(4px);
-    box-shadow: 0 4px 20px rgba(255, 180, 80, 0.25);
 }
 
-/* Gradient highlighted words */
 .about-description .highlight {
     font-weight: 700;
     background: linear-gradient(to right, #ff8c00, #ffbb55);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    padding-bottom: 2px;
     border-bottom: 2px solid rgba(255, 160, 50, 0.6);
 }
 
-/* Heading modern look */
 .enhanced-about h2 {
-    position: relative;
-    z-index: 3;
     font-size: 36px;
     color: #7a3e00;
     margin-bottom: 25px;
     text-shadow: 0 2px 8px rgba(255, 180, 80, 0.5);
 }
 
-
-/* Floating Symbols — NON OVERLAPPING VERSION */
+/* Floating symbols animation */
 .floating-symbols {
     position: absolute;
     top: 0;
@@ -212,46 +168,22 @@ nav ul li a:hover, nav ul li a.active {
     z-index: 1;
     pointer-events: none;
     display: flex;
-    justify-content: space-around; /* EVEN spacing → NO overlap */
+    justify-content: space-around;
     align-items: flex-end;
 }
 
 .floating-symbols span {
     font-size: 40px;
-    font-weight: bold;
     color: rgba(255, 140, 0, 0.42);
     animation: floatUp 6s infinite ease-in-out;
-    position: relative;
     bottom: -40px;
     opacity: 0;
 }
-
-/* Make each symbol animate differently (prevents visible repetition) */
-.floating-symbols span:nth-child(1) { animation-duration: 9s; animation-delay: 0s; }
-.floating-symbols span:nth-child(2) { animation-duration: 10s; animation-delay: 1s; }
-.floating-symbols span:nth-child(3) { animation-duration: 11s; animation-delay: 2s; }
-.floating-symbols span:nth-child(4) { animation-duration: 9.5s; animation-delay: 1.5s; }
-.floating-symbols span:nth-child(5) { animation-duration: 10.5s; animation-delay: 0.7s; }
-.floating-symbols span:nth-child(6) { animation-duration: 12s; animation-delay: 2.3s; }
 
 @keyframes floatUp {
     0% { transform: translateY(40px) scale(1.9); opacity: 0; }
     40% { opacity: 1; }
     100% { transform: translateY(-250px) scale(1.2); opacity: 0; }
-}
-
-/* Ensure text is above animation */
-.enhanced-about h2,
-.enhanced-about p {
-    position: relative;
-    z-index: 3;
-}
-
-/* Mobile-friendly scaling */
-@media (max-width: 600px) {
-    .floating-symbols span {
-        font-size: 20px;
-    }
 }
 
 /* Footer */
@@ -262,11 +194,51 @@ footer {
     color: #3a1c00;
 }
 
-/* Responsive */
-@media screen and (max-width: 768px) {
-    .hero-text h1 { font-size: 40px; }
-    .hero-text p { font-size: 18px; }
-    nav { flex-direction: column; }
-    nav ul { flex-direction: column; }
-    nav ul li { margin: 10px 0; }
+/* ------------------------------- */
+/* RESPONSIVE FIXES (MOBILE VIEW) */
+/* ------------------------------- */
+
+@media (max-width: 768px) {
+
+    /* NAVIGATION FIX (NO OVERLAP) */
+    nav {
+        flex-direction: column;
+        align-items: center;
+        padding: 15px 20px;
+    }
+
+    nav ul {
+        flex-direction: column;
+        width: 100%;
+        margin-top: 15px;
+        text-align: center;
+    }
+
+    nav ul li {
+        margin: 10px 0 !important;
+    }
+
+    nav ul li a {
+        font-size: 18px;
+    }
+
+    .logo-main { font-size: 20px; }
+    .logo-sub { font-size: 12px; }
+
+    /* Hero */
+    .hero-text h1 { font-size: 38px; }
+    .hero-text p { font-size: 16px; padding: 0 10px; }
+
+    /* About section */
+    .enhanced-about { padding: 20px 20px; }
+    .about-description { font-size: 17px; padding: 20px 15px; }
+
+    /* Symbols smaller */
+    .floating-symbols span { font-size: 22px; }
+}
+
+@media (max-width: 480px) {
+    .logo-main { font-size: 18px; }
+    .hero-text h1 { font-size: 32px; }
+    .hero-text p { font-size: 15px; }
 }
