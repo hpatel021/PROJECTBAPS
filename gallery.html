@@ -79,7 +79,23 @@
 
     <!-- Add more albums here -->
 </section>
+<script>
+    // Mobile menu toggle (same as home page)
+    const navToggle = document.getElementById("navToggle");
+    const navLinks = document.getElementById("navLinks");
 
+    navToggle.addEventListener("click", () => {
+        navLinks.classList.toggle("open");
+navToggle.textContent = navLinks.classList.contains("open") ? "✕" : "☰";    });
+
+    // Close menu when clicking a link
+    document.querySelectorAll(".nav-links a").forEach(link => {
+        link.addEventListener("click", () => {
+            navLinks.classList.remove("open");
+            navToggle.textContent = "Menu";
+        });
+    });
+</script>
 <!-- Footer -->
 <footer>
     © 2025 BAPS Swaminarayan Temple | Newport News, VA
