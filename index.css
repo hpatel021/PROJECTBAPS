@@ -1,10 +1,34 @@
-/* Home page CSS */
+/* Reset & Base */
+* { margin: 0; padding: 0; box-sizing: border-box; }
 body, html {
-    margin: 0;
-    padding: 0;
     font-family: "Poppins", sans-serif;
+    overflow-x: hidden;
 }
 
+/* Header & Hero */
+.header {
+    background: url('images/temple-bg.jpg') no-repeat center center/cover;
+    height: 100vh;
+    color: #fff;
+    position: relative;
+}
+.header::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.5);
+    z-index: 1;
+}
+
+/* Navigation */
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px 50px;
+    position: relative;
+    z-index: 1000;
+}
 /* Logo styling */
 .logo {
     display: flex;
@@ -27,83 +51,32 @@ body, html {
     margin-top: 3px;
     opacity: 0.9;
 }
-
-/* HERO TEXT */
-.hero-text h1 {
-    font-size: 60px;
-    margin: 0;
-    text-shadow: 2px 2px 8px #000, 0 0 20px rgba(255, 170, 50, 0.6);
-}
-
-.hero-text p {
-    font-size: 22px;
-    margin-top: 12px;
-    text-shadow: 1px 1px 6px #000;
-    color: #ffeccc;
-}
-
-/* Header */
-.header {
-    background: url('images/temple-bg.jpg') no-repeat center center/cover;
-    height: 100vh;
-    color: #fff;
-    position: relative;
-}
-
-.header::after {
-    content: '';
-    position: absolute;
-    top:0;
-    left:0;
-    width:100%;
-    height:100%;
-    background: rgba(0,0,0,0.5);
-}
-
-/* Navigation bar */
-nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 18px 50px;
-    position: relative;
-    z-index: 10; /* higher than hero-text */
-}
-
-/* Hamburger button */
+/* Hamburger */
 .nav-toggle {
     display: none;
-    font-size: 32px;
     background: none;
     border: none;
     color: white;
+    font-size: 32px;
     cursor: pointer;
+    z-index: 1001;
 }
 
-/* Nav links - Desktop */
+/* Nav Links - Desktop */
 .nav-links {
     display: flex;
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    flex-direction: row;
-    align-items: center;
     gap: 28px;
+    list-style: none;
 }
-
-.nav-links li a {
-    text-decoration: none;
+.nav-links a {
     color: #fff;
+    text-decoration: none;
     font-weight: 600;
-    transition: 0.3s;
+    transition: color 0.3s;
 }
+.nav-links a:hover, .nav-links a.active { color: #ffdf00; }
 
-.nav-links li a:hover,
-.nav-links li a.active {
-    color: #ffdf00;
-}
-
-/* Hero text */
+/* Hero Text */
 .hero-text {
     position: absolute;
     top: 50%;
@@ -111,91 +84,84 @@ nav {
     transform: translate(-50%, -50%);
     text-align: center;
     z-index: 2;
+    width: 90%;
+    max-width: 1000px;
+}
+.hero-text h1 {
+    font-size: 60px;
+    text-shadow: 2px 2px 8px #000, 0 0 20px rgba(255,170,50,0.6);
+}
+.hero-text p {
+    font-size: 22px;
+    margin-top: 12px;
+    text-shadow: 1px 1px 6px #000;
+    color: #ffeccc;
 }
 
-/* ABOUT SECTION */
+/* About Section */
 .enhanced-about {
     position: relative;
-    padding: 4px 80px;
+    padding: 60px 80px;
     text-align: center;
-    color: #3a1c00;
-    overflow: hidden;
     background: linear-gradient(to bottom right, #fff3dc, #ffe9c7);
     border-top: 2px solid #ffb347;
     border-bottom: 2px solid #ffb347;
+    overflow: hidden;
 }
-
 .about-overlay {
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+    inset: 0;
     background: radial-gradient(circle, rgba(255,205,133,0.5), transparent 70%);
     animation: glowPulse 6s infinite alternate;
-    z-index: 1;
 }
+@keyframes glowPulse { 0% { opacity: 0.4; } 100% { opacity: 0.8; } }
 
-@keyframes glowPulse {
-    0% { opacity: 0.4; }
-    100% { opacity: 0.8; }
-}
-
+.enhanced-about h2 { font-size: 36px; color: #7a3e00; margin-bottom: 25px; text-shadow: 0 2px 8px rgba(255,180,80,0.5); }
 .about-description {
     position: relative;
-    z-index: 3;
+    z-index: 2;
     max-width: 800px;
     margin: 0 auto;
     font-size: 20px;
     line-height: 1.7;
     padding: 40px 25px;
     border-radius: 12px;
-    background: rgba(255, 244, 225, 0.55);
+    background: rgba(255,244,225,0.55);
     backdrop-filter: blur(4px);
 }
-
-.about-description .highlight {
+.highlight {
     font-weight: 700;
     background: linear-gradient(to right, #ff8c00, #ffbb55);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    border-bottom: 2px solid rgba(255, 160, 50, 0.6);
 }
 
-.enhanced-about h2 {
-    font-size: 36px;
-    color: #7a3e00;
-    margin-bottom: 25px;
-    text-shadow: 0 2px 8px rgba(255, 180, 80, 0.5);
-}
-
-/* Floating symbols animation */
+/* Floating Symbols */
 .floating-symbols {
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 1;
+    inset: 0;
     pointer-events: none;
     display: flex;
     justify-content: space-around;
-    align-items: flex-end;
 }
-
 .floating-symbols span {
     font-size: 40px;
-    color: rgba(255, 140, 0, 0.42);
-    animation: floatUp 6s infinite ease-in-out;
-    bottom: -40px;
-    opacity: 0;
+    color: rgba(255,140,0,0.42);
+    animation: floatUp 8s infinite ease-in-out;
+    animation-delay: calc(var(--i) * 1s);
 }
-
 @keyframes floatUp {
-    0% { transform: translateY(40px) scale(1.9); opacity: 0; }
+    0% { transform: translateY(100px) scale(1.9); opacity: 0; }
     40% { opacity: 1; }
-    100% { transform: translateY(-250px) scale(1.2); opacity: 0; }
+    100% { transform: translateY(-300px) scale(1.2); opacity: 0; }
 }
+.floating-symbols span:nth-child(1) { --i: 0; }
+.floating-symbols span:nth-child(2) { --i: 1; }
+.floating-symbols span:nth-child(3) { --i: 2; }
+.floating-symbols span:nth-child(4) { --i: 3; }
+.floating-symbols span:nth-child(5) { --i: 4; }
+.floating-symbols span:nth-child(6) { --i: 5; }
+.floating-symbols span:nth-child(7) { --i: 6; }
 
 /* Footer */
 footer {
@@ -203,66 +169,51 @@ footer {
     padding: 20px;
     background: #ffb347;
     color: #3a1c00;
+    font-weight: 500;
 }
 
-/* ------------------------------- */
-/* RESPONSIVE FIXES (MOBILE VIEW) */
-/* ------------------------------- */
+/* ============================= */
+/* MOBILE RESPONSIVE (THE FIX!) */
+/* ============================= */
 @media (max-width: 768px) {
+    nav { padding: 15px 20px; }
+    .nav-toggle { display: block; }
 
-    /* Hamburger button */
-    .nav-toggle {
-        display: block;
-    }
-
-    /* Hide nav links by default */
     .nav-links {
-        display: none;
-        flex-direction: column;
-        width: 100%;
-        text-align: center;
         position: fixed;
-        top: 0;
-        left: 0;
+        top: 0; left: 0;
+        width: 100%;
         height: 100vh;
-        background: rgba(0, 0, 0, 0.95);
-        padding-top: 80px; /* leave space for nav */
-        gap: 30px;
-        z-index: 9999;
-    }
-
-    /* Show nav links when open */
-    .nav-links.open {
-        display: flex;
-    }
-
-    nav {
-        flex-direction: row; /* keep logo and toggle horizontal */
-        justify-content: space-between;
+        background: rgba(0,0,0,0.98);
+        flex-direction: column;
+        justify-content: center;
         align-items: center;
-        padding: 15px 20px;
-        position: relative;
-        z-index: 10000;
+        gap: 40px;
+        transform: translateY(-100%);
+        transition: transform 0.4s ease-in-out;
+        z-index: 999;
     }
-
-    .nav-links li a {
-        font-size: 24px;
+    .nav-links.open {
+        transform: translateY(0);
+    }
+    .nav-links a {
+        font-size: 28px;
+        font-weight: 600;
     }
 
     .logo-main { font-size: 20px; }
     .logo-sub { font-size: 12px; }
 
-    .hero-text h1 { font-size: 38px; }
-    .hero-text p { font-size: 16px; padding: 0 10px; }
+    .hero-text h1 { font-size: 42px; }
+    .hero-text p { font-size: 18px; }
 
-    .enhanced-about { padding: 20px 20px; }
-    .about-description { font-size: 17px; padding: 20px 15px; }
-
-    .floating-symbols span { font-size: 22px; }
+    .enhanced-about { padding: 40px 20px; }
+    .about-description { font-size: 17px; padding: 25px 15px; }
+    .floating-symbols span { font-size: 28px; }
 }
 
 @media (max-width: 480px) {
+    .hero-text h1 { font-size: 36px; }
+    .hero-text p { font-size: 16px; }
     .logo-main { font-size: 18px; }
-    .hero-text h1 { font-size: 32px; }
-    .hero-text p { font-size: 15px; }
 }

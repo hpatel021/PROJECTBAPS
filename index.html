@@ -1,30 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>BAPS Swaminarayan Temple</title>
-<link rel="stylesheet" href="index.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- THIS WAS MISSING! -->
+    <title>BAPS Swaminarayan Temple</title>
+    <link rel="stylesheet" href="index.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
 <header class="header">
- <nav>
-    <div class="logo">
-        <span class="logo-main">BAPS Swaminarayan Temple</span>
-        <span class="logo-sub">Newport News – Virginia</span>
-    </div>
+    <nav>
+        <div class="logo">
+            <span class="logo-main">BAPS Swaminarayan Temple</span>
+            <span class="logo-sub">Newport News – Virginia</span>
+        </div>
 
-    <!-- HAMBURGER BUTTON -->
-    <button class="nav-toggle" id="navToggle">☰</button>
+        <!-- Hamburger Button -->
+        <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">☰</button>
 
-    <ul class="nav-links" id="navLinks">
-        <li><a class="active" href="index.html">Home</a></li>
-        <li><a href="music.html">Music</a></li>
-        <li><a href="gallery.html">Gallery</a></li>
-        <li><a href="brahmavidhya.html">Brahmavidhya</a></li>
-        <li><a href="about.html">About</a></li>
-    </ul>
-</nav>
+        <ul class="nav-links" id="navLinks">
+            <li><a class="active" href="index.html">Home</a></li>
+            <li><a href="music.html">Music</a></li>
+            <li><a href="gallery.html">Gallery</a></li>
+            <li><a href="brahmavidhya.html">Brahmavidhya</a></li>
+            <li><a href="about.html">About</a></li>
+        </ul>
+    </nav>
 
     <div class="hero-text">
         <h1>Divinity, Devotion & Peace</h1>
@@ -57,35 +59,36 @@
 </section>
 
 <footer>
-   © 2025 BAPS Swaminarayan Temple | Newport News VA
+    © 2025 BAPS Swaminarayan Temple | Newport News VA
 </footer>
 
+<!-- Background peaceful sound -->
 <audio id="bgAudio" autoplay loop>
     <source src="audio/Om.mp3" type="audio/mpeg">
 </audio>
 
 <script>
-    // Set volume VERY low (0.05 = 5%)
-    const audio = document.getElementById("bgAudio");
-    audio.volume = 0.1;
-</script>
-<script>
-    // Set volume VERY low (0.05 = 5%)
-    const audio = document.getElementById("bgAudio");
-    audio.volume = 0.1;
-</script>
+    // Background music - low volume
+    document.getElementById("bgAudio").volume = 0.1;
 
-<!-- MOBILE NAV TOGGLE -->
-<script>
+    // Mobile menu toggle
     const navToggle = document.getElementById("navToggle");
     const navLinks = document.getElementById("navLinks");
 
     navToggle.addEventListener("click", () => {
         navLinks.classList.toggle("open");
+        // Change hamburger to X when open
+        navToggle.textContent = navLinks.classList.contains("open") ? "✕" : "☰";
+    });
+
+    // Close menu when clicking a link (nice UX)
+    document.querySelectorAll(".nav-links a").forEach(link => {
+        link.addEventListener("click", () => {
+            navLinks.classList.remove("open");
+            navToggle.textContent = "☰";
+        });
     });
 </script>
-
-</body>
 
 </body>
 </html>

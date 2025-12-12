@@ -1,34 +1,27 @@
 /* ============================= */
-/* PROJECTBAPS Music Page CSS     */
+/* MUSIC PAGE - FULLY RESPONSIVE */
 /* ============================= */
 
+* { margin: 0; padding: 0; box-sizing: border-box; }
 body, html {
-    margin: 0;
-    padding: 0;
     font-family: 'Poppins', sans-serif;
-    scroll-behavior: smooth;
     background: #0d0d0d;
     color: #fff;
+    overflow-x: hidden;
 }
 
-/* ============================= */
-/* HEADER + NAVIGATION            */
-/* ============================= */
-
+/* Header */
 .header {
     position: relative;
     height: 70vh;
     background: url('images/temple-bg.jpg') no-repeat center center/cover;
-    color: #fff;
-    z-index: 1;
 }
-
 .header::after {
     content: '';
     position: absolute;
     inset: 0;
     background: rgba(0,0,0,0.5);
-    z-index: 0;
+    z-index: 1;
 }
 
 /* Logo styling */
@@ -54,104 +47,75 @@ body, html {
     opacity: 0.9;
 }
 
-/* Navigation — FIXED Z-INDEX */
+/* Navigation */
 nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 20px 50px;
     position: relative;
-    z-index: 9999 !important;    /* FULL FIX */
+    z-index: 1000;
 }
-
-nav ul {
-    list-style: none;
+.nav-toggle {
+    display: none;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 32px;
+    cursor: pointer;
+    z-index: 1001;
+}
+.nav-links {
     display: flex;
-    margin: 0;
-    padding: 0;
-    position: relative;
-    z-index: 9999 !important;    /* Prevent clicking issues */
+    gap: 30px;
+    list-style: none;
 }
-
-nav ul li {
-    margin-left: 30px;
-}
-
-nav ul li a {
-    text-decoration: none;
+.nav-links a {
     color: #fff;
+    text-decoration: none;
     font-weight: bold;
     transition: 0.3s;
 }
+.nav-links a:hover, .nav-links a.active { color: #ffdf00; }
 
-nav ul li a:hover, 
-nav ul li a.active {
-    color: #ffdf00;
-}
-
-/* ============================= */
-/* HERO TEXT                      */
-/* ============================= */
-
+/* Hero Text */
 .hero-text {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     text-align: center;
-
-    z-index: 10;   /* BELOW NAV but ABOVE overlay */
+    z-index: 10;
+    width: 90%;
 }
+.hero-text h1 { font-size: 60px; text-shadow: 2px 2px 8px #000; margin: 0; }
+.hero-text p { font-size: 24px; margin-top: 10px; text-shadow: 1px 1px 6px #000; }
 
-.hero-text h1 {
-    font-size: 60px;
-    margin: 0;
-    text-shadow: 2px 2px 8px #000;
-}
-
-.hero-text p {
-    font-size: 24px;
-    margin-top: 10px;
-    text-shadow: 1px 1px 6px #000;
-}
-
-/* ============================= */
-/* FLOATING PARTICLES             */
-/* ============================= */
-
+/* Particles */
 .particles span {
     position: absolute;
-    display: block;
-    width: 8px;
-    height: 8px;
-    background: rgba(255, 223, 0, 0.7);
+    width: 8px; height: 8px;
+    background: rgba(255,223,0,0.7);
     border-radius: 50%;
     animation: particleMove 10s linear infinite;
     opacity: 0;
 }
-
-/* Particle positions & delays */
-.particles span:nth-child(1){ left:10%; animation-delay:0s; top:20%; }
-.particles span:nth-child(2){ left:25%; animation-delay:2s; top:10%; }
-.particles span:nth-child(3){ left:40%; animation-delay:4s; top:15%; }
-.particles span:nth-child(4){ left:55%; animation-delay:1s; top:25%; }
-.particles span:nth-child(5){ left:70%; animation-delay:3s; top:5%; }
-.particles span:nth-child(6){ left:85%; animation-delay:2.5s; top:18%; }
-.particles span:nth-child(7){ left:15%; animation-delay:1.7s; top:30%; }
-.particles span:nth-child(8){ left:35%; animation-delay:0.5s; top:12%; }
-.particles span:nth-child(9){ left:60%; animation-delay:4.2s; top:20%; }
-.particles span:nth-child(10){ left:80%; animation-delay:3.3s; top:8%; }
-
+.particles span:nth-child(1){ left:10%; top:20%; animation-delay:0s; }
+.particles span:nth-child(2){ left:25%; top:10%; animation-delay:2s; }
+.particles span:nth-child(3){ left:40%; top:15%; animation-delay:4s; }
+.particles span:nth-child(4){ left:55%; top:25%; animation-delay:1s; }
+.particles span:nth-child(5){ left:70%; top:5%; animation-delay:3s; }
+.particles span:nth-child(6){ left:85%; top:18%; animation-delay:2.5s; }
+.particles span:nth-child(7){ left:15%; top:30%; animation-delay:1.7s; }
+.particles span:nth-child(8){ left:35%; top:12%; animation-delay:0.5s; }
+.particles span:nth-child(9){ left:60%; top:20%; animation-delay:4.2s; }
+.particles span:nth-child(10){ left:80%; top:8%; animation-delay:3.3s; }
 @keyframes particleMove {
-    0% { transform: translateY(0) scale(0.5); opacity: 0.3; }
+    0%, 100% { transform: translateY(0) scale(0.5); opacity: 0.3; }
     50% { transform: translateY(-30px) scale(1); opacity: 1; }
-    100% { transform: translateY(0) scale(0.5); opacity: 0.3; }
 }
 
-/* ============================= */
-/* ALBUM CARDS                    */
-/* ============================= */
-
+/* Album Cards */
 .albums-container {
     display: flex;
     flex-wrap: wrap;
@@ -160,46 +124,26 @@ nav ul li a.active {
     gap: 30px;
     background: linear-gradient(180deg, #0d0d0d 0%, #1a1a1a 100%);
 }
-
 .album-card {
     width: 250px;
     border-radius: 20px;
     overflow: hidden;
     cursor: pointer;
-    background: rgba(255, 255, 255, 0.05);
+    background: rgba(255,255,255,0.05);
     backdrop-filter: blur(15px);
     box-shadow: 0 8px 20px rgba(0,0,0,0.5);
     text-align: center;
-    transition: transform 0.3s, box-shadow 0.3s;
+    transition: all 0.3s;
 }
-
 .album-card:hover {
     transform: translateY(-10px);
     box-shadow: 0 15px 25px rgba(0,0,0,0.7);
 }
+.album-image { height: 200px; background-size: cover; background-position: center; }
+.album-card h3 { margin: 15px 0 5px; font-size: 22px; color: #ffdf00; }
+.album-card p { margin-bottom: 20px; font-size: 16px; }
 
-.album-image {
-    height: 200px;
-    background-size: cover;
-    background-position: center;
-}
-
-.album-card h3 {
-    margin: 15px 0 5px;
-    font-size: 22px;
-    color: #ffdf00;
-}
-
-.album-card p {
-    margin-bottom: 20px;
-    font-size: 16px;
-    color: #fff;
-}
-
-/* ============================= */
-/* FOOTER                         */
-/* ============================= */
-
+/* Footer */
 footer {
     text-align: center;
     padding: 25px 0;
@@ -209,34 +153,39 @@ footer {
 }
 
 /* ============================= */
-/* RESPONSIVE FIXES              */
+/* MOBILE RESPONSIVE (FIXED!)   */
 /* ============================= */
+@media (max-width: 768px) {
+    nav { padding: 15px 20px; }
+    .nav-toggle { display: block; }
 
-@media screen and (max-width: 1024px) {
-    .hero-text h1 { font-size: 48px; }
+    .nav-links {
+        position: fixed;
+        top: 0; left: 0;
+        width: 100%; height: 100vh;
+        background: rgba(0,0,0,0.98);
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 40px;
+        transform: translateY(-100%);
+        transition: transform 0.4s ease;
+        z-index: 999;
+    }
+    .nav-links.open { transform: translateY(0); }
+    .nav-links a { font-size: 28px; font-weight: 600; }
+
+    .logo-main { font-size: 20px; }
+    .logo-sub { font-size: 12px; }
+
+    .hero-text h1 { font-size: 42px; }
     .hero-text p { font-size: 20px; }
-    .album-card { width: 220px; }
+
+    .albums-container { padding: 40px 15px; gap: 25px; }
+    .album-card { width: 180px; }
 }
 
-@media screen and (max-width: 768px) {
-    nav {
-        flex-direction: column;
-        gap: 20px;
-        padding: 15px 20px;
-    }
-
-    nav ul {
-        flex-direction: column;
-        gap: 12px;
-    }
-
+@media (max-width: 480px) {
     .hero-text h1 { font-size: 36px; }
-    .hero-text p { font-size: 18px; }
-
-    .albums-container {
-        padding: 40px 10px;
-        gap: 20px;
-    }
-
-    .album-card { width: 200px; }
+    .album-card { width: 160px; }
 }
